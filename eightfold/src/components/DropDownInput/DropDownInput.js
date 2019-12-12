@@ -39,7 +39,7 @@ const DropDownInput = (props) => {
        const {movies, updateDropDownState } = props;
         return (
             <div className="movie-dropdown">
-            <input onClick={() => {updateDropDownState((movies.dropdownMovieList.length > 0))}} onChange={debounce(handleChange, 200)} type="text" placeholder="Enter title"/>
+            <input onClick={() => {updateDropDownState((movies.dropdownMovieList.length > 0))}} onChange={debounce(handleChange, 200)} type="text" placeholder="Enter Movie Title..."/>
             { movies.dropdownOpen ? <div className="dropdown">
         {movies.dropdownMovieList.map(movie=> 
         <div onClick={() => {listItemClicked(movie.Title)}} className={(movies.selectedMovieList.includes(movie.Title)) ? "list-item selected" : 'list-item'} key={movie.Title}>
