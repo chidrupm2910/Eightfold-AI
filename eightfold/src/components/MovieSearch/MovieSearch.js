@@ -9,9 +9,10 @@ const MovieSearch = (props) => {
     // Movie Pills and Dropdown Input Section
     return (
         <React.Fragment>
-         {errorMsg ? <div className="max-limit">{errorMsg}</div>: null}
+            <div className="main-app-div">
+         {errorMsg ? <div className="max-limit"><span>{errorMsg}</span></div>: null}
          
-       {selectedMovieList.length === 5 ? <div className="max-limit">Maximum limit reached - 5</div>: null}
+       {selectedMovieList.length === 5 ? <div className="max-limit"><span>Maximum limit reached - 5</span></div>: null}
       
         <div className="movie-search-bar" onClick={(event) => {event.stopPropagation()}}>
          <div className="movie-bubbles">
@@ -19,6 +20,7 @@ const MovieSearch = (props) => {
         </div>  
        
          <DropDownInput />
+        </div>
         </div>
         </React.Fragment>
     )

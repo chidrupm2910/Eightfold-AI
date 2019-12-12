@@ -100,9 +100,15 @@
 }
 
 .max-limit {
-    background: #fff;
+    background: transparent;
     color: #ff0000;
     margin-bottom: 10px;
-    padding: 7px;
+  
     border-radius: 5px;
+    text-align: center;
+}
+
+.max-limit span {
+    padding: 7px;
+    background: #fff;
 }

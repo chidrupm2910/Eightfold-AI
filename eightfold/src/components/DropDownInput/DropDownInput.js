@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { movieNameSearch } from '../../store/actions/movieActions';
 import { bindActionCreators } from 'redux';
 import { UPDATE_DROPDOWN_STATE,UPDATE_SELECTED_MOVIE_LIST } from '../../constants/actionTypes';
-
+import Input from '../../common/Input';
+import DropdownListItem from '../../common/DropdownlListItem';
 
 const DropDownInput = (props) => {
 
@@ -11,23 +12,6 @@ const DropDownInput = (props) => {
         const { movieNameSearch } = props;
         if(value.length > 0) {
         movieNameSearch(value);
-        }
-    }
-
-// Debouncing for optimization when the data set is large . Makes an API call after 200ms after user stops typing
-   const debounce = (func, delay) => {
-        let context = this;
-        let timeout;
-        return (...args) => {
-       
-            const key = args[0].target.value;
-
-            const functionCall = () => {
-            
-                func.call(context, key);
-            }
-            clearTimeout(timeout);
-            timeout = setTimeout(functionCall, delay);
         }
     }
     
@@ -42,18 +26,11 @@ const DropDownInput = (props) => {
        const {movies, updateDropDownState } = props;
         return (
             <div className="movie-dropdown">
-            <input onClick={() => {updateDropDownState((movies.dropdownMovieList.length > 0))}} onChange={debounce(handleChange, 200)} type="text" placeholder="Enter Movie Title..."/>
+            <Input clickCallBack={() => {updateDropDownState((movies.dropdownMovieList.length > 0))}} callBack={(value) => {handleChange(value)}} placeholder="Enter Movie Title..." type="text"/>
             { movies.dropdownOpen ? <div className="dropdown">
         {movies.dropdownMovieList.map(movie=> 
-        <div onClick={() => {listItemClicked(movie.Title)}} className={(movies.selectedMovieList.includes(movie.Title)) ? "list-item selected" : 'list-item'} key={movie.Title}>
-            <div>
-                <img alt="No Image" src={movie.Poster}/>
-            </div>
-       <div className="movie-details">
-            <span className="name">{movie.Title}</span>
-        <span className="year">{movie.Year}</span>
-            </div>
-            </div>)}
+            <DropdownListItem key={movie.Title} selectedMovieList={movies.selectedMovieList} movie={movie} clickedCallBack={(title) => {listItemClicked(title)}} />
+            )}
             </div>
              : null}
            </div>
