@@ -7,13 +7,16 @@ import './App.css';
 function App(props) {
   const { updateDropDownState } = props;
   return (
-    <div className="app" onClick={() => {;updateDropDownState(false)}}>
+    <div className="app" onClick={() => {if(mapStatetoProps) {updateDropDownState(false)}}}>
       <MovieSearch />
     </div>
   );
 }
 
+const mapStatetoProps = state => ({
+  dropdownOpen: state.movies.dropdownOpen
+})
 const mapDispatchToProps = dispatch => ({
   updateDropDownState: (dropdownOpen) => dispatch({ type: UPDATE_DROPDOWN_STATE, dropdownOpen})
 })
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStatetoProps, mapDispatchToProps)(App);
