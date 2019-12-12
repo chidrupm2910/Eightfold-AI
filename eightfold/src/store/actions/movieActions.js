@@ -6,7 +6,6 @@ export const movieNameSearch = (movie) => {
 
    return dispatch => axios.get(url)
     .then(response => {
-        console.log('Movie Response', response.data);
         dispatch({ type: UPDATE_MOVIE_TITLES_FROM_SEARCH, dropdownMovieList: (response.data.Response.toLowerCase() === 'true') ? response.data.Search : []});
     })
 }

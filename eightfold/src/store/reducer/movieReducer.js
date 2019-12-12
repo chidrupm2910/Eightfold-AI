@@ -10,7 +10,6 @@ const movieReducer = (state = initialState(), action = {}) => {
     switch(action.type) {
 
         case UPDATE_MOVIE_TITLES_FROM_SEARCH: {
-            console.log('Action', action)
             return {
                 ...state,
                 dropdownMovieList: action.dropdownMovieList,
