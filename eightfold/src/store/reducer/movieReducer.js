@@ -1,9 +1,13 @@
-import { UPDATE_MOVIE_TITLES_FROM_SEARCH,UPDATE_DROPDOWN_STATE,UPDATE_SELECTED_MOVIE_LIST } from '../../constants/actionTypes';
+import { UPDATE_MOVIE_TITLES_FROM_SEARCH,
+        UPDATE_DROPDOWN_STATE,
+        UPDATE_SELECTED_MOVIE_LIST,
+        UPDATE_ERROR_MESSAGE } from '../../constants/actionTypes';
 
 const initialState = () => ({
     selectedMovieList: [],
     dropdownMovieList: [],
-    dropdownOpen: false
+    dropdownOpen: false,
+    errorMsg: ''
 })
 
 const movieReducer = (state = initialState(), action = {}) => {
@@ -13,7 +17,8 @@ const movieReducer = (state = initialState(), action = {}) => {
             return {
                 ...state,
                 dropdownMovieList: action.dropdownMovieList,
-                dropdownOpen: (action.dropdownMovieList.length > 0)
+                dropdownOpen: (action.dropdownMovieList.length > 0),
+                errorMsg: action.errorMsg
             }
         }
         case UPDATE_DROPDOWN_STATE: {
@@ -26,6 +31,12 @@ const movieReducer = (state = initialState(), action = {}) => {
             return {
                 ...state,
                 selectedMovieList: action.selectedMovieList
+            }
+        }
+        case UPDATE_ERROR_MESSAGE: {
+            return {
+                ...state,
+                errorMsg: action.errorMsg
             }
         }
         default: {

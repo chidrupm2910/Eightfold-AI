@@ -9,9 +9,12 @@ const DropDownInput = (props) => {
 
     const handleChange = (value) => {
         const { movieNameSearch } = props;
+        if(value.length > 0) {
         movieNameSearch(value);
+        }
     }
 
+// Debouncing for optimization when the data set is large . Makes an API call after 200ms after user stops typing
    const debounce = (func, delay) => {
         let context = this;
         let timeout;

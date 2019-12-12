@@ -12,7 +12,7 @@ const MovieBubble = (props) => {
     return (
         <React.Fragment>
             {selectedMovieList.map(movie => 
-                 <div className="movie-bubble">
+                 <div key={movie} className="movie-bubble">
                  <span>{movie}</span>
                  <span onClick={() => {deleteMovie(movie)}}><i className="fa fa-close" /></span>
               </div>
