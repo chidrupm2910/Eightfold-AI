@@ -32,6 +32,8 @@ const response = {
 
 };
 const mockStore = configureMockStore([thunk]);
+
+// Test Cases
 describe('MOVIE INPUT TESTS', () => {
 
     let wrapper;
@@ -63,7 +65,7 @@ describe('MOVIE INPUT TESTS', () => {
     });
 
     moxios.uninstall();
-    
+
     it('Should Render One Movie Dropdown Component', () => {
         const dropdown = wrapper.find('.movie-dropdown');
         expect(dropdown.length).toBe(1);
