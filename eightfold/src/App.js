@@ -7,7 +7,7 @@ import './App.css';
 function App(props) {
   const { updateDropDownState } = props;
   return (
-    <div className="app" onClick={() => {if(mapStatetoProps) {updateDropDownState(false)}}}>
+    <div className="app" onClick={() => {updateDropDownState(false)}}>
       <MovieSearch />
     </div>
   );
