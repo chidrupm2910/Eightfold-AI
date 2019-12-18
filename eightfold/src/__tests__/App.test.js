@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import configureStore from 'redux-mock-store';
 import moxios from 'moxios';
 import { Provider } from 'react-redux';
 import App from '../App';
@@ -41,7 +40,6 @@ describe('MOVIE INPUT TESTS', () => {
         wrapper = mount(<Provider store={store}><App /></Provider>);
     });
 
-    afterEach(() => moxios.uninstall());
     it('Application should render without crashing', () => {
         expect(wrapper).toBeTruthy();
     });
@@ -64,6 +62,8 @@ describe('MOVIE INPUT TESTS', () => {
             });
     });
 
+    moxios.uninstall();
+    
     it('Should Render One Movie Dropdown Component', () => {
         const dropdown = wrapper.find('.movie-dropdown');
         expect(dropdown.length).toBe(1);
